@@ -9,7 +9,7 @@ import Checkout from './Checkout'
 import Modal from './Modal'
 import Accordion from './Accordion'
 import Waypoints from './Waypoints'
-import Gesture from './Gesture'
+import Gesture from './Gesture2'
 
 const App = () => {
   const [isNavOpen, setNavOpen] = useState(false)
