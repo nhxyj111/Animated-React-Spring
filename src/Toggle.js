@@ -3,6 +3,28 @@ import { useTransition, animated } from 'react-spring'
 
 const Toggle = () => {
   const [isToggle, setToggle] = useState(false)
+  const [items, setItems] = useState([
+    {
+      letters: 'S',
+      key: 1,
+    },
+    {
+      letters: 'S',
+      key: 2,
+    },
+    {
+      letters: 'O',
+      key: 3,
+    },
+    {
+      letters: 'T',
+      key: 4,
+    },
+    {
+      letters: 'T',
+      key: 5,
+    },
+  ])
   // const fade = useSpring({
   //   // opacity: isToggle ? 1 : 0,
   //   color: isToggle ? 'tomato' : 'green',
@@ -10,7 +32,7 @@ const Toggle = () => {
   //   // transform: isToggle ? 'translate3d(0,0,0)' : 'translate3d(0,-50px,0)',
   //   y: isToggle ? 0 : 1,
   // })
-  const transition = useTransition(isToggle, null, {
+  const transition = useTransition(items, item => item.key, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
@@ -18,14 +40,11 @@ const Toggle = () => {
 
   return (
     <div>
-      {transition.map(
-        ({ item, key, props }) =>
-          item && (
-            <animated.h1 key={key} style={props}>
-              Hello
-            </animated.h1>
-          )
-      )}
+      {transition.map(({ item, key, props }) => (
+        <animated.h1 style={props} key={key}>
+          {item.letters}
+        </animated.h1>
+      ))}
       {/* <animated.h1
       // style={{
       //   ...fade,
@@ -39,7 +58,18 @@ const Toggle = () => {
       >
         Hello
       </animated.h1> */}
-      <button onClick={() => setToggle(!isToggle)}>Toggle</button>
+      <button
+        onClick={() =>
+          setItems([
+            {
+              letters: 'S',
+              key: 1,
+            },
+          ])
+        }
+      >
+        Toggle
+      </button>
     </div>
   )
 }
