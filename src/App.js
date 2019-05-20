@@ -7,6 +7,7 @@ import Routes from './Routes'
 import Nav from './Nav'
 import Checkout from './Checkout'
 import Modal from './Modal'
+import Accordion from './Accordion'
 
 const App = () => {
   const [isNavOpen, setNavOpen] = useState(false)
@@ -39,6 +40,7 @@ const App = () => {
         {/* <Toggle /> */}
         {/* <Routes /> */}
         <Modal />
+        <Accordion />
       </main>
       <Checkout isOpen={isNavOpen} />
     </animated.div>
